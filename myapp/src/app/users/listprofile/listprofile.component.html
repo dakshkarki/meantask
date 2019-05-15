@@ -1,0 +1,66 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!--/.sidebar-->
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  
+  <app-breadcrumb></app-breadcrumb> 
+
+  <!-- <div class="col-xs-12 col-md-6 col-lg-6 no-padding"> -->
+    <form>
+      <div class="profile-head mb-4 pt-2 profile">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="title">All Profile info :</h2>
+            <!-- <a routerLink="/users/editprofile" class="btn btn-primary btn-sm pull-right">Edit profile</a> -->
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-content profile-tab" id="myTabContent">
+        <div class="row">
+
+          <table class="table">
+            <thead>
+              <!-- <th>UserId</th> -->
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>EmailId</th>
+              <th>MobileNo</th>
+              <th>State</th>
+              <th>City</th>
+              <th>Gender</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let xyz of profileuser">
+                <!-- <td>{{xyz._id}}</td> -->
+                <td>{{xyz.firstname }}</td>
+                <td>{{xyz.lastname}}</td>
+                <td>{{xyz.email}}</td>
+                <td>{{xyz.mobilenumber}}</td>
+                <td>{{xyz.state}}</td>
+                <td>{{xyz.city}}</td>
+                <td>{{xyz.gender}}</td>
+                
+                <td> <button (click)="editData(xyz)" class="btn btn-primary mt-4"><i class="glyphicon glyphicon-pencil"></i></button> {{" "}}
+                  <button (click)="DeleteData(xyz._id)" class="btn btn-primary mt-4"><i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+                <td>
+                  
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </form>
+  <!-- </div> -->
+
+  <app-footer></app-footer>
+  <!--/.row-->
+</div>

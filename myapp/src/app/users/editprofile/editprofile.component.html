@@ -1,0 +1,312 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+
+
+<div class="col-sm-9 col-sm-offset-0 col-lg-10 col-lg-offset-2 main">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+<div class="container emp-profile col-xs-12 col-md-6 col-lg-10 col-lg-offset-2 main">
+    <div class=" emp-profile">
+        <form [formGroup]="editUserForm" (ngSubmit)="editUserSubmit()" enctype="multipart/form-data">
+            <div class="profile-head mb-4 pt-2">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h2 class="title">Edit profile :</h2>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+            <div class="tab-content profile-tab" id="myTabContent">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Firstname</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="firstname" class="form-control" value="" />
+                                <div *ngIf="editUserForm.controls['firstname'].errors && (editUserForm.controls['firstname'].dirty || editUserForm.controls['firstname'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['firstname'].errors.required">
+                                        Firstname is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['firstname'].errors.pattern">
+                                        Firstname is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Mobile number</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" formControlName="mobilenumber" class="form-control" value="" min="0" />
+                                <div *ngIf="editUserForm.controls['mobilenumber'].errors && (editUserForm.controls['mobilenumber'].dirty || editUserForm.controls['mobilenumber'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['mobilenumber'].errors.required">
+                                        Mobile number is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['mobilenumber'].errors.pattern">
+                                        Mobile number is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="email" class="form-control" value="" disabled/>
+                                <div *ngIf="editUserForm.controls['email'].errors && (editUserForm.controls['email'].dirty || editUserForm.controls['email'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['email'].errors.required">
+                                        Email is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['email'].errors.pattern">
+                                        Email is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Gender</label>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <input type="text" formControlName="gender" class="form-control" value="" /> -->
+                                <select formControlName="gender" class="form-control">
+                                    <option disabled selected>Select gender--</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <div *ngIf="editUserForm.controls['gender'].errors && (editUserForm.controls['gender'].dirty || editUserForm.controls['gender'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['gender'].errors.required">
+                                        Gender is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['gender'].errors.pattern">
+                                        Gender is invalid.
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+
+                              <div class="col-md-4">
+                                  <label>Upload an Image</label>
+                              </div>
+
+                              <div class="col-md-6">
+                              <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+                                  <!-- <button type="button"
+                                  (click)="uploader.uploadAll()"
+                                  [disabled]="!uploader.getNotUploadedItems().length">
+                                </button> -->
+                            </div>
+                      </div>
+                        <br>
+
+
+                        <!-- </div><br>  -->
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Lastname</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="lastname" class="form-control" value="" />
+                                <div *ngIf="editUserForm.controls['lastname'].errors && (editUserForm.controls['lastname'].dirty || editUserForm.controls['lastname'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['lastname'].errors.required">
+                                        Lastname is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['lastname'].errors.pattern">
+                                        Lastname is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>State</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="state" class="form-control" value="" min="0" />
+                                <div *ngIf="editUserForm.controls['state'].errors && (editUserForm.controls['state'].dirty || editUserForm.controls['state'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['state'].errors.required">
+                                        state is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['state'].errors.pattern">
+                                        state is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>city</label>
+                            </div>
+                            <div class="col-md-6">
+                                <textarea type="text" formControlName="city" class="form-control" value=""></textarea>
+                                <div *ngIf="editUserForm.controls['city'].errors && (editUserForm.controls['city'].dirty || editUserForm.controls['city'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['address'].errors.required">
+                                        city is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['city'].errors.pattern">
+                                        city is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Job title</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="jobtitle" class="form-control" value="" />
+                                <div *ngIf="editUserForm.controls['jobtitle'].errors && (editUserForm.controls['jobtitle'].dirty || editUserForm.controls['jobtitle'].touched)">
+                                    <span class="error" *ngIf="editUserForm.controls['jobtitle'].errors.required">
+                                        Jobtitle is required.
+                                    </span>
+                                    <span class="error" *ngIf="editUserForm.controls['jobtitle'].errors.pattern">
+                                        Jobtitle is invalid.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <div class="row">
+                                        <div class="col-md-4">
+                                            <label>License number</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" formControlName="licensenumber" class="form-control" value="" />
+                                            <div *ngIf="editUserForm.controls['licensenumber'].errors && (editUserForm.controls['licensenumber'].dirty || editUserForm.controls['licensenumber'].touched)">
+                                                <span class="error" *ngIf="editUserForm.controls['licensenumber'].errors.required">
+                                                    Licensenumber is required.
+                                                </span>
+                                                <span class="error" *ngIf="editUserForm.controls['licensenumber'].errors.pattern">
+                                                    Licensenumber is invalid.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div><br> -->
+
+                    </div>
+                </div>
+
+
+                <!-- <div class="row">
+                        <div class="col-md-6">
+                            <label>Email signature image</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="file" formControlName="emailsignatureimage" class="form-control" name="image" (change)="filechange($event)" />
+                            <div *ngIf="editUserForm.controls['emailsignature'].errors && (editUserForm.controls['emailsignature'].dirty || editUserForm.controls['emailsignature'].touched)">
+                                <span class="error" *ngIf="editUserForm.controls['emailsignature'].errors.required">
+                                Email signature image is required
+                                </span>
+                            </div>
+                        </div>
+                    </div><br> -->
+
+                <div class="row pt-4">
+                    <div class="col-md-5">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div *ngIf="editProfileFail">
+                            <span style="color:red;">Please enter all valid details</span>
+                        </div>
+                        <div>&nbsp;</div>
+                        <button type="submit" class="btn btn-primary"(click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Save changes</button>&nbsp;&nbsp;
+                        <!-- <button type="button" pButton icon="pi pi-close" (click)="edituser=false; resetForm()" label="Cancel" class="ui-button-secondary"></button> -->
+                    </div>
+                    <div>
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="col-sm-9 col-sm-offset-0 col-lg-10 col-lg-offset-2 main">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<div class= "container col-sm-9 col-sm-offset-0 col-lg-10 col-lg-offset-2 main">
+<form [formGroup]="editUserForm" >
+    <div class ="row">
+            <h2 class="title">Edit profile :</h2>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Firstname</label>
+             </div>
+             <div class="col-md-6">
+                    <input type="text" formControlName="firstname" class="form-control" value="" />
+
+                    <div *ngIf="editUserForm.controls['firstname'].errors && (editUserForm.controls['firstname'].dirty || editUserForm.controls['firstname'].touched)">
+                            <span class="error" *ngIf="editUserForm.controls['firstname'].errors.required">
+                                Firstname is required.
+                            </span>
+                            <span class="error" *ngIf="editUserForm.controls['firstname'].errors.pattern">
+                                Firstname is invalid.
+                            </span>
+                        </div>
+             </div>
+        </div><br>
+        <div class="row">
+                <div class="col-md-4">
+                    <label>Mobile number</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="number" formControlName="mobilenumber" class="form-control" value="" min="0" />
+                    <div *ngIf="editUserForm.controls['mobilenumber'].errors && (editUserForm.controls['mobilenumber'].dirty || editUserForm.controls['mobilenumber'].touched)">
+                        <span class="error" *ngIf="editUserForm.controls['mobilenumber'].errors.required">
+                            Mobile number is required.
+                        </span>
+                        <span class="error" *ngIf="editUserForm.controls['mobilenumber'].errors.pattern">
+                            Mobile number is invalid.
+                        </span>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</form>
+</div>-->

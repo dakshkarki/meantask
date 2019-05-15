@@ -1,0 +1,185 @@
+<div class="row">
+
+  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+    <p class="green" *ngIf="signupSuccessful" >Sign up Successfull, verification link is sent to your Email click on that link, Then<a routerLink=""> login</a> </p>
+    <div class="login-panel panel panel-default">
+
+      <div class="panel-heading">Signup</div>
+      <div class="panel-body">
+        <form class="form-group" role="form" [formGroup]="signupForm" novalidate (ngSubmit)="onSubmit()">
+          <fieldset>
+
+            <div class="row form-group">
+
+              <div class="col col-md-6">
+
+                <input type="text" formControlName="firstname" class="form-control placeholder-size" placeholder="First name">
+
+                <div *ngIf="signupForm.controls['firstname'].errors && (signupForm.controls['firstname'].dirty || signupForm.controls['firstname'].touched)">
+                  <span class="redxx" *ngIf="signupForm.controls['firstname'].errors.required">
+                    firstname is required.
+                  </span>
+                  <span class="redxx" *ngIf="signupForm.controls['firstname'].errors.pattern">
+                    firstname is invalid.
+                  </span>
+                </div>
+              </div>
+              <div class="col col-md-6">
+                <input type="text" formControlName="lastname" class="form-control placeholder-size" placeholder="Last name">
+                <div *ngIf="signupForm.controls['lastname'].errors && (signupForm.controls['lastname'].dirty || signupForm.controls['lastname'].touched)">
+                  <span  class="redxx" *ngIf="signupForm.controls['lastname'].errors.required">
+                    lastname is required.
+                  </span>
+                  <span class="redxx" *ngIf="signupForm.controls['lastname'].errors.pattern">
+                    lastname is invalid.
+                  </span>
+                </div>
+
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-12">
+                <input type="text" formControlName="email" class="form-control placeholder-size" placeholder="Email">
+                <div *ngIf="signupForm.controls['email'].errors && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+                  <span  class="redxx"*ngIf="signupForm.controls['email'].errors.required">
+                    email is required.
+                  </span>
+                  <span class="redxx" *ngIf="signupForm.controls['email'].errors.pattern">
+                    email is invalid.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col col-md-12">
+                <input type="password" formControlName="password" class="form-control placeholder-size" placeholder="Password">
+                <div *ngIf="signupForm.controls['password'].errors && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+                  <span class="redxx" *ngIf="signupForm.controls['password'].errors.required">
+                    password is required.
+                  </span>
+                  <span class="redxx" *ngIf="signupForm.controls['password'].errors.pattern">
+                    Password must be at least 8 characters, and must include at least one numeric digit one upercase alphabet.
+                        </span>
+                </div>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-12">
+                <input type="password" formControlName="cpassword" class="form-control placeholder-size" placeholder="Confirm Password">
+                <div *ngIf=" signupForm.controls['cpassword'].dirty || signupForm.controls['cpassword'].touched">
+                  <span  class="redxx" *ngIf="signupForm.controls['cpassword'].errors?.required">
+                    confirm password is required.
+                  </span>
+
+                  <span class="redxx"  *ngIf="signupForm.controls['password'].valid  && signupForm.errors?.mismatch">
+                    password mismatch.
+                  </span>
+                </div>
+              </div>
+            </div>
+         
+            <div class="row form-group">
+              <div class="col-md-12">
+                  <!-- <label>Mobile number</label> -->
+              
+                  <input type="number" formControlName="mobilenumber" class="form-control" value="" min="0" placeholder="mobilenumber"/>
+                  <div *ngIf="signupForm.controls['mobilenumber'].errors && (signupForm.controls['mobilenumber'].dirty || signupForm.controls['mobilenumber'].touched)">
+                      <span class="error" *ngIf="signupForm.controls['mobilenumber'].errors.required">
+                          Mobile number is required.
+                      </span>
+                      <span class="error" *ngIf="signupForm.controls['mobilenumber'].errors.pattern">
+                          Mobile number is invalid.
+                      </span>
+                  </div>
+              </div>
+          </div>
+         
+          <div class="row form-group">
+            <div class="col-md-12">
+                <!-- <label>Gender</label>
+            </div>
+            <div class="col-md-6"> -->
+                <!-- <input type="text" formControlName="gender" class="form-control" value="" /> -->
+                <select formControlName="gender" class="form-control">
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <div *ngIf="signupForm.controls['gender'].errors && (signupForm.controls['gender'].dirty || signupForm.controls['gender'].touched)">
+                    <span class="error" *ngIf="signupForm.controls['gender'].errors.required">
+                        Gender is required.
+                    </span>
+                    <span class="error" *ngIf="signupForm.controls['gender'].errors.pattern">
+                        Gender is invalid.
+                    </span>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row form-group">
+          <div class="col-md-12">
+              <!-- <label>State</label>
+          </div>
+          <div class="col-md-6"> -->
+              <!-- <input type="text" formControlName="gender" class="form-control" value="" /> -->
+              <select formControlName="state" class="form-control">
+                  <option value="">Select state</option>
+                  
+                  <option value="Maharastra">Maharastra</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Karnataka">Karnataka</option>
+              </select>
+              <div *ngIf="signupForm.controls['state'].errors && (signupForm.controls['state'].dirty || signupForm.controls['state'].touched)">
+                  <span class="error" *ngIf="signupForm.controls['state'].errors.required">
+                    state is required.
+                  </span>
+                  <span class="error" *ngIf="signupForm.controls['state'].errors.pattern">
+                    state is invalid.
+                  </span>
+              </div>
+          </div>
+      </div>
+      
+      <div class="row form-group">
+        <div class="col-md-12">
+            <!-- <label>City's</label>
+        </div>
+        <div class="col-md-6"> -->
+            <!-- <input type="text" formControlName="gender" class="form-control" value="" /> -->
+            <select formControlName="city" class="form-control">
+               
+                <option value="">Select city's</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Haydrabad">Haydrabad</option>
+            </select>
+            <div *ngIf="signupForm.controls['city'].errors && (signupForm.controls['city'].dirty || signupForm.controls['city'].touched)">
+                <span class="error" *ngIf="signupForm.controls['city'].errors.required">
+                  city is required.
+                </span>
+                <span class="error" *ngIf="signupForm.controls['city'].errors.pattern">
+                  city is invalid.
+                </span>
+            </div>
+        </div>
+    </div>
+       
+            
+            <hr>
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <hr>
+            <div class="row form-group">
+              <div class="col col-md-8">
+                <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Sign up</button>
+              </div>
+
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div><!-- /.col-->
+</div><!-- /.row -->
